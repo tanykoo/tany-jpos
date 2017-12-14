@@ -1,5 +1,7 @@
 package com.tany.jpos;
 
+import com.tany.jpos.interfaces.Prefix;
+
 /**
  * @Author ThinkPad
  * @Since

@@ -1,5 +1,8 @@
 package com.tany.jpos;
 
+import com.tany.jpos.interfaces.Padder;
+import com.tany.jpos.interfaces.Prefix;
+
 public abstract class ISOFieldPackager {
     //前缀解析器
     protected Prefix prefix;

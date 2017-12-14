@@ -1,4 +1,4 @@
-package com.tany.jpos;
+package com.tany.jpos.interfaces;
 
 public interface Prefix {
 

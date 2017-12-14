@@ -1,5 +1,7 @@
-package com.tany.jpos;
+package com.tany.jpos.interfaces;
 
+
+import com.tany.jpos.ISOField;
 
 public interface Padder {
     public ISOField pad(ISOField isoField);
