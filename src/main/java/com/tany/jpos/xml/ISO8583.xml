@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ISO8583 xmlns="http://www.tanykoo.iso8583"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.tanykoo.iso8583 ISO8583.xsd">
+
+    <msg id="C034">
+        <head>
+        </head>
+        <body>
+            <field fieldno="adsd" maxlen="31"/>
+        </body>
+    </msg>
+    
+    <msg>
+        <head></head>
+        <body>
+            <field>SDSFS</field>
+        </body>
+    </msg>
+</ISO8583>
