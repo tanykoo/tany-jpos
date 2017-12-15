@@ -6,13 +6,20 @@ import com.tany.jpos.ISOField;
 
 public class IFB_Bitmap extends ISOBitMapPackager{
     @Override
-    public ISOBitMap unPackbody(byte[] b) {
-        return null;
+    protected byte[] toBinaryByte(byte[] b, int offset) {
+        int bitset = (b[offset] & 0x80) == 0 ? 64 : 128;
+        byte [] bitMap = new byte[bitset >> 3];
+        System.arraycopy(b, offset, bitMap, 0, bitMap.length);
+        return bitMap;
     }
 
+    @Override
+    protected int getLength(byte[] bitMap) {
+        return bitMap.length;
+    }
 
     @Override
-    public byte[] pack(ISOBitMap isoBitMap) {
-        return new byte[0];
+    protected byte[] toLocalByte(byte[] bitmap) {
+        return bitmap;
     }
 }

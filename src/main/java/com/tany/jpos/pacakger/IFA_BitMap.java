@@ -1,20 +1,37 @@
 package com.tany.jpos.pacakger;
 
 
-import com.tany.jpos.ISOBitMap;
 import com.tany.jpos.ISOBitMapPackager;
-import com.tany.jpos.ISOField;
+import com.tany.jpos.utils.JPosUtil;
+
+import java.util.BitSet;
 
 public class IFA_BitMap extends ISOBitMapPackager{
 
     @Override
-    public ISOBitMap unPackbody(byte[] b) {
-
-        return null;
+    protected byte[] toBinaryByte(byte[] b, int offset) {
+        int bit = 0;
+        if(((b[offset] & 0xff) - 0x30) >= 0x08){
+            bit = 128;
+        }else
+            bit = 64;
+        byte[] bitMapbytes = new byte[bit >> 2];
+        System.arraycopy(b, offset, bitMapbytes, 0, bitMapbytes.length);
+        return bitMapbytes;
     }
 
     @Override
-    public byte[] pack(ISOBitMap isoBitMap) {
-        return new byte[0];
+    protected int getLength(byte[] b) {
+        return b.length << 2;
+    }
+
+    @Override
+    public byte[] toLocalByte(byte [] bitMap) {
+        byte tmp [] = new byte[bitMap.length << 1 ];
+        for(int i = 0; i<bitMap.length; i++){
+            tmp[i * 2] = (byte)JPosUtil.UPPER_HEX_STR.charAt((((bitMap[i] & 0xff) >> 4) & 0x0f));
+            tmp[i * 2 + 1] = (byte)JPosUtil.UPPER_HEX_STR.charAt(bitMap[i] & 0x0f);
+        }
+        return tmp;
     }
 }

@@ -5,6 +5,7 @@ public abstract class ISOField {
     protected String type;
     protected Object value;
     private  int length;
+    private String prefix;
 
     public abstract Object getValue();
 
@@ -25,4 +26,10 @@ public abstract class ISOField {
         this.value = value;
     }
 
+    public String getPrefix(){
+        return prefix;
+    }
+    public void setPrefix(String prefix){
+        this.prefix = prefix;
+    }
 }

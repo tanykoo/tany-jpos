@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ISO8583  xmlns="http://www.w3school.com.cn"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.w3school.com.cn ISO8583.xsd">
+    <msg id="dsd">
+        <head>
+            <Field name="HF1" maxLen="15" prefix="LBCD" type="bcd" fieldno="12" />
+            <Field name="HF2" maxLen="30"  type="hex"  fieldno="2"/>
+        </head>
+        <body>
+            <Field name="BF1" maxLen="19" type="hex" fieldno="243"/>
+        </body>
+    </msg>
+</ISO8583>

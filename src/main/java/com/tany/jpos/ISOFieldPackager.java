@@ -11,7 +11,7 @@ public abstract class ISOFieldPackager {
     //ISO8583域最大长度
     protected int maxlen;
 
-    public ISOField unPack(byte b[] , int offset){
+    public ISOField unPack(byte b[] , int offset) throws ISOException{
 
         int bodylen = prefix.unpack(b,offset);
         int prefixlen = prefix.getPrefixByteLen();
@@ -19,7 +19,7 @@ public abstract class ISOFieldPackager {
         return padder.unPad(unPackbody(b, offset + prefixlen , bodylen == Prefix.NOPREFIX ? maxlen : bodylen ));
     }
 
-    protected ISOField unPackbody(byte b[] , int offset, int bodylen){
+    protected ISOField unPackbody(byte b[] , int offset, int bodylen)throws ISOException{
         byte [] body = new byte[bodylen];
         System.arraycopy(b,offset, body,0, bodylen);
 
@@ -29,9 +29,9 @@ public abstract class ISOFieldPackager {
         return  isoField;
     }
 
-    protected abstract ISOField unPackbody(byte b[]);
+    protected abstract ISOField unPackbody(byte b[])throws ISOException;
 
-    public byte [] pack(ISOField isoField){
+    public byte [] pack(ISOField isoField)throws ISOException{
         isoField = padder.pad(isoField);
         byte [] body = packbody(isoField);
         byte [] bprefix = prefix.pack(body.length);
@@ -41,5 +41,5 @@ public abstract class ISOFieldPackager {
         return tmp;
     }
 
-    protected  abstract  byte [] packbody(ISOField isoField);
+    protected  abstract  byte [] packbody(ISOField isoField)throws ISOException;
 }
