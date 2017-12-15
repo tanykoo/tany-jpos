@@ -8,6 +8,8 @@ public interface Prefix {
 
     public byte[] pack(int length);
 
-    public int getPrefixLen();
+    public int getPrefixByteLen();
+
+    public void setPrefixLen(int prefixLen);
 
 }

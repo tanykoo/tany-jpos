@@ -18,7 +18,12 @@ public class NullPrefix implements Prefix {
     }
 
     @Override
-    public int getPrefixLen() {
+    public int getPrefixByteLen() {
         return NOPREFIX;
+    }
+
+    @Override
+    public void setPrefixLen(int prefixLen){
+
     }
 }

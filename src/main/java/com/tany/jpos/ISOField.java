@@ -21,5 +21,8 @@ public abstract class ISOField {
     public void setLength(int length){
         this.length = length;
     }
+    public void setValue(Object value){
+        this.value = value;
+    }
 
 }

@@ -3,7 +3,6 @@ package com.tany.jpos;
 import com.tany.jpos.interfaces.Msg;
 import com.tany.jpos.interfaces.Packager;
 
-import javax.print.attribute.standard.MediaSize;
 import java.util.BitSet;
 import java.util.Hashtable;
 
@@ -29,7 +28,7 @@ public class ISOPackager implements Packager {
         ISOBitMap bitMap = null;
         for(Integer i : bodyPackagers.keySet()){
             if(bodyPackagers.get(i) instanceof ISOBitMapPackager){
-                bitMap = ((ISOBitMapPackager)bodyPackagers.get(i)).unPack(b,offset);
+                bitMap = (ISOBitMap) (bodyPackagers.get(i)).unPack(b,offset);
                 bitmapSet = i;
                 offset += bitMap.getLength();
                 isoMsg.addBody(bitMap);
@@ -43,10 +42,15 @@ public class ISOPackager implements Packager {
         if(bitMap == null ){
             throw new ISOException("报文配置错误,没有位图","10000");
         }
-        for(int i = bitmapSet; i < 128 ; i++){
-            BitSet bitSet = bitMap.getValue();
+        BitSet bitSet = bitMap.getValue();
+        for(int i = bitmapSet; i < bitSet.length() ; i++){
             if(bitSet.get(i)){
-                ISOField isoField = bodyPackagers.get(i).unPack(b,offset);
+                ISOField isoField =null;
+                try {
+                    isoField = bodyPackagers.get(i).unPack(b, offset);
+                }catch (ISORuntimeException e){
+                    throw new ISOException(e.getMessage(),i,"");
+                }
                 offset += isoField.getLength();
                 isoMsg.addBody(isoField);
             }

@@ -14,7 +14,7 @@ public abstract class ISOFieldPackager {
     public ISOField unPack(byte b[] , int offset){
 
         int bodylen = prefix.unpack(b,offset);
-        int prefixlen = prefix.getPrefixLen();
+        int prefixlen = prefix.getPrefixByteLen();
 
         return padder.unPad(unPackbody(b, offset + prefixlen , bodylen == Prefix.NOPREFIX ? maxlen : bodylen ));
     }
@@ -24,7 +24,7 @@ public abstract class ISOFieldPackager {
         System.arraycopy(b,offset, body,0, bodylen);
 
         ISOField isoField =  unPackbody(body);
-        isoField.setLength(prefix.getPrefixLen() + bodylen);
+        isoField.setLength(prefix.getPrefixByteLen() + bodylen);
 
         return  isoField;
     }

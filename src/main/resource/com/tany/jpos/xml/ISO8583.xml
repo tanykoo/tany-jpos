@@ -14,7 +14,7 @@
     <msg>
         <head></head>
         <body>
-            <field>SDSFS</field>
+            <field fieldno="3" maxlen="32">SDSFS</field>
         </body>
     </msg>
 </ISO8583>

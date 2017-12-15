@@ -18,7 +18,7 @@
                             <xs:element name="body">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element ref="field" minOccurs="1" maxOccurs="unbounded"/>
+                                        <xs:element ref="field" maxOccurs="unbounded"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>

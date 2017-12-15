@@ -6,7 +6,14 @@ import java.util.BitSet;
  * @Author ThinkPad
  * @Since 1.0
  */
-public abstract class ISOBitMap extends ISOField{
+public class ISOBitMap extends ISOField{
+
+    {
+        type="bitmap";
+    }
+
     @Override
-    public abstract BitSet getValue() ;
+    public BitSet getValue() {
+        return (BitSet) value;
+    }
 }
