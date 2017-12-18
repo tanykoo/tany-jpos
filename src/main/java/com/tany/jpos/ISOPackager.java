@@ -8,9 +8,9 @@ import java.util.Hashtable;
 
 public class ISOPackager implements Packager {
 
-    private ISOFieldPackager[] headPackagers;
+    private BaseISOFieldPackager[] headPackagers;
 
-    private Hashtable<Integer,ISOFieldPackager> bodyPackagers;
+    private Hashtable<Integer,BaseISOFieldPackager> bodyPackagers;
 
     private boolean hasMsgType = false;
 

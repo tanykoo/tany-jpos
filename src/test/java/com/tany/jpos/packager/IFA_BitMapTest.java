@@ -1,4 +1,4 @@
-package com.tany.jpos.packager.test;
+package com.tany.jpos.packager;
 
 import com.tany.jpos.pacakger.IFA_BitMap;
 import org.junit.Assert;

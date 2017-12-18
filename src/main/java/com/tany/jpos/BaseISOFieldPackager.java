@@ -3,12 +3,12 @@ package com.tany.jpos;
 import com.tany.jpos.interfaces.Padder;
 import com.tany.jpos.interfaces.Prefix;
 
-public abstract class ISOFieldPackager {
-    //前缀解析器
+public abstract class BaseISOFieldPackager {
+    // 前缀解析器
     protected Prefix prefix;
-    //补位解析器
+    // 补位解析器
     protected Padder padder;
-    //ISO8583域最大长度
+    // ISO8583域最大长度
     protected int maxlen;
 
     public ISOField unPack(byte b[] , int offset) throws ISOException{
@@ -29,6 +29,12 @@ public abstract class ISOFieldPackager {
         return  isoField;
     }
 
+    /**
+     * 根据字段类型解析成字段内容
+     * @param b 从报文中截取的字段的字节内容
+     * @return  ISO8583域内容
+     * @throws ISOException
+     */
     protected abstract ISOField unPackbody(byte b[])throws ISOException;
 
     public byte [] pack(ISOField isoField)throws ISOException{
@@ -41,5 +47,11 @@ public abstract class ISOFieldPackager {
         return tmp;
     }
 
+    /**
+     * 组
+     * @param isoField
+     * @return
+     * @throws ISOException
+     */
     protected  abstract  byte [] packbody(ISOField isoField)throws ISOException;
 }

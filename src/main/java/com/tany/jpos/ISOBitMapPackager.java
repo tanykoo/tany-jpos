@@ -6,7 +6,7 @@ import java.util.BitSet;
  * @Author ThinkPad
  * @Since 1.0
  */
-public abstract class ISOBitMapPackager extends ISOFieldPackager {
+public abstract class ISOBitMapPackager extends BaseISOFieldPackager {
 
     {
         this.padder = new NullPadder();

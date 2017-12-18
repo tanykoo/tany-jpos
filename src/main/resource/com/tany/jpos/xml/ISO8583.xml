@@ -7,14 +7,16 @@
         <head>
         </head>
         <body>
-            <field fieldno="adsd" maxlen="31"/>
+            <field fieldno="1" maxlen="31" name="ad"/>
+            <field fieldno="2" maxlen="31" name="asd"/>
         </body>
     </msg>
     
-    <msg>
+    <msg id="C035">
         <head></head>
         <body>
-            <field fieldno="3" maxlen="32">SDSFS</field>
+            <field fieldno="3" maxlen="3" name="ds"/>
+            <field fieldno="2" maxlen="32" name="ds"/>
         </body>
     </msg>
 </ISO8583>

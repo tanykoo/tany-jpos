@@ -4,12 +4,12 @@ public interface Prefix {
 
     int NOPREFIX = -1;
 
-    public int unpack(byte b[],int offset);
+    int unpack(byte b[],int offset);
 
-    public byte[] pack(int length);
+    byte[] pack(int length);
 
-    public int getPrefixByteLen();
+    int getPrefixByteLen();
 
-    public void setPrefixLen(int prefixLen);
+    void setPrefixLen(int prefixLen);
 
 }
