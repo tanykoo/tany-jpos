@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.tanykoo.iso8583"
+           xmlns="http://www.tanykoo.iso8583"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+    <xs:element name="ISO8583">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="msg" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="head">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="field" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="body">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="field" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:ID"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="field" type="fieldattr">
+    </xs:element>
+
+    <xs:complexType name="fieldattr">
+        <xs:attribute name="maxlen" type="xs:int" use="required"/>
+        <xs:attribute name="fieldno" type="xs:int" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attributeGroup ref="fieldattr1"/>
+        <xs:attributeGroup ref="fieldattr2"/>
+    </xs:complexType>
+
+    <xs:group name="fieldattr1">
+        <xs:all>
+            <xs:element name="maxlen" type="xs:int"/>
+            <xs:element name="fieldno" type="xs:int"/>
+            <xs:element name="name" type="xs:int"/>
+        </xs:all>
+    </xs:group>
+    <xs:group name="fieldattr2">
+        <xs:sequence>
+            <xs:element name="pad" type="PAD"/>
+            <xs:element name="prefix" type="PREFIX"/>
+
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="fieldattr3">
+        <xs:all>
+            <xs:element name="class" type="xs:string"/>
+        </xs:all>
+    </xs:group>
+
+    <xs:attributeGroup name="fieldattr1">
+        <xs:attribute name="padder" type="PAD"/>
+        <xs:attribute name="prefix" type="PREFIX"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="fieldattr2">
+        <xs:attribute name="class" type="xs:string" >
+            <xs:annotation>
+                <xs:documentation source="java:java.lang.Class"><![CDATA[
+	                    The fully qualified name of the bean's class, except if it serves only
+	                    as a parent definition for child bean definitions.
+				]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+
+
+    <xs:simpleType name="PAD" id="pad">
+        <xs:annotation>
+            <xs:documentation
+                    source="http://www.tanykoo.iso8583/#pad"/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RS"/>
+            <xs:enumeration value="SL"/>
+            <xs:enumeration value="RO"/>
+            <xs:enumeration value="OL"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PREFIX" id="prefix">
+        <xs:annotation>
+            <xs:documentation
+                    source="http://www.tanykoo.iso8583/#pad"/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(L+B)|(L+A)|(L+H)|NULL"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

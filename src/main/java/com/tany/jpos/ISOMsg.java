@@ -8,6 +8,14 @@ public class ISOMsg implements Msg {
     private ISOField []  head ;
     private Hashtable<Integer,ISOField> body;
 
+    public ISOField[] getHead() {
+        return head;
+    }
+
+    public Hashtable<Integer, ISOField> getBody() {
+        return body;
+    }
+
     public Object getBodyValue(int fieldno){
         if(body.get(fieldno) != null){
             return body.get(fieldno).getValue();

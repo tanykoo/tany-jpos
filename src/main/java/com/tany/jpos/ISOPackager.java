@@ -59,7 +59,26 @@ public class ISOPackager implements Packager {
     }
 
     @Override
-    public byte[] pack(Msg msg) {
-        return new byte[0];
+    public byte[] pack(Msg msg) throws ISOException{
+        if(!(msg instanceof ISOMsg)){
+            throw new ISOException("非ISOMSG");
+        }
+
+        Hashtable<Integer,ISOField> body = ((ISOMsg) msg).getBody();
+        byte bodyb[] = null;
+        byte tmp[] = new byte[0];
+        for(int i = 0; i < 128; i++){
+            if(body.contains(i)){
+                if(!bodyPackagers.contains(i)){
+                    throw new ISOException("组包失败,拆解器未配置", i, "301");
+                }
+                byte[] b = bodyPackagers.get(i).pack(body.get(i));
+                bodyb = new byte[tmp.length + b.length];
+                System.arraycopy(tmp, 0, bodyb,0,tmp.length);
+                System.arraycopy(b, 0, bodyb, tmp.length, b.length);
+                tmp = bodyb;
+            }
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 package com.tany.jpos;
 
 import com.tany.jpos.interfaces.Packager;
+import com.tany.jpos.io.Resource;
 
 public class PackagerFactory {
     private static PackagerFactory factory;
@@ -17,6 +18,10 @@ public class PackagerFactory {
     }
 
     public Packager buildPackager(){
+        return new ISOPackager();
+    }
+
+    public Packager buildPackager(Resource resource){
         return new ISOPackager();
     }
 
