@@ -7,4 +7,6 @@ package com.tany.jpos.interfaces;
  *
  */
 public interface Field {
+    Object getValue();
+    void setValue(Object value);
 }

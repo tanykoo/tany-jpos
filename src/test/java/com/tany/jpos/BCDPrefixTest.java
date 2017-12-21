@@ -1,9 +1,9 @@
 package com.tany.jpos;
 
 import com.tany.jpos.interfaces.Prefix;
+import com.tany.jpos.iso.ISORuntimeException;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import static junit.framework.TestCase.fail;
 

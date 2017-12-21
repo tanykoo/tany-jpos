@@ -1,11 +1,11 @@
-package com.tany.jpos;
+package com.tany.jpos.iso;
 
 import com.tany.jpos.interfaces.Msg;
 
 import java.util.Hashtable;
 
 public class ISOMsg implements Msg {
-    private ISOField []  head ;
+    private ISOField[]  head ;
     private Hashtable<Integer,ISOField> body;
 
     public ISOField[] getHead() {

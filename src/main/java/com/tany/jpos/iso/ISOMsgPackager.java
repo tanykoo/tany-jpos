@@ -1,12 +1,12 @@
-package com.tany.jpos;
+package com.tany.jpos.iso;
 
 import com.tany.jpos.interfaces.Msg;
-import com.tany.jpos.interfaces.Packager;
+import com.tany.jpos.interfaces.MsgPackager;
 
 import java.util.BitSet;
 import java.util.Hashtable;
 
-public class ISOPackager implements Packager {
+public class ISOMsgPackager implements MsgPackager {
 
     private BaseISOFieldPackager[] headPackagers;
 
@@ -27,7 +27,7 @@ public class ISOPackager implements Packager {
         int bitmapSet = 0;
         ISOBitMap bitMap = null;
         for(Integer i : bodyPackagers.keySet()){
-            if(bodyPackagers.get(i) instanceof ISOBitMapPackager){
+            if(bodyPackagers.get(i).getContentPackager() instanceof ISOBitMapPackager){
                 bitMap = (ISOBitMap) (bodyPackagers.get(i)).unPack(b,offset);
                 bitmapSet = i;
                 offset += bitMap.getLength();
@@ -79,6 +79,6 @@ public class ISOPackager implements Packager {
                 tmp = bodyb;
             }
         }
-
+        return  bodyb;
     }
 }

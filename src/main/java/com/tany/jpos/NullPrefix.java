@@ -9,7 +9,7 @@ import com.tany.jpos.interfaces.Prefix;
 public class NullPrefix implements Prefix {
     @Override
     public int unpack(byte[] b, int offset) {
-        return 0;
+        return NOPREFIX;
     }
 
     @Override
@@ -19,7 +19,7 @@ public class NullPrefix implements Prefix {
 
     @Override
     public int getPrefixByteLen() {
-        return NOPREFIX;
+        return 0;
     }
 
     @Override

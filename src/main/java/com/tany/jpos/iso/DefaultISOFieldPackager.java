@@ -1,4 +1,4 @@
-package com.tany.jpos;
+package com.tany.jpos.iso;
 
 /**
  * @Author ThinkPad
@@ -11,17 +11,7 @@ public class DefaultISOFieldPackager extends BaseISOFieldPackager {
     }
 
     public DefaultISOFieldPackager(String fieldtype, String padder, String prefixtype, int maxlen){
-
-        this.maxlen = maxlen;
+        super(null, maxlen);
     }
 
-    @Override
-    protected ISOField unPackbody(byte[] b) {
-        return null;
-    }
-
-    @Override
-    protected byte[] packbody(ISOField isoField) {
-        return new byte[0];
-    }
 }

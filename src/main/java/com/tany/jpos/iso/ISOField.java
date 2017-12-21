@@ -1,6 +1,8 @@
-package com.tany.jpos;
+package com.tany.jpos.iso;
 
-public abstract class ISOField {
+import com.tany.jpos.interfaces.Field;
+
+public abstract class ISOField implements Field{
     protected  int fieldno;
     protected String type;
     protected Object value;
@@ -32,4 +34,6 @@ public abstract class ISOField {
     public void setPrefix(String prefix){
         this.prefix = prefix;
     }
+
+    public abstract String toString();
 }

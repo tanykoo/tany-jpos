@@ -1,7 +1,9 @@
-package com.tany.jpos;
+package com.tany.jpos.iso;
 
 
-public class ISOException extends Throwable{
+import com.tany.jpos.JPOSException;
+
+public class ISOException extends JPOSException{
     private String errCode;
 
     public ISOException(String message, String errCode) {

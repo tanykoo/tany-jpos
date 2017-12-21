@@ -1,7 +1,7 @@
 package com.tany.jpos;
 
-import com.sun.istack.internal.NotNull;
 import com.tany.jpos.interfaces.Prefix;
+import com.tany.jpos.iso.ISORuntimeException;
 
 /**
  * @Author ThinkPad

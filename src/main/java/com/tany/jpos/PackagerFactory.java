@@ -1,7 +1,8 @@
 package com.tany.jpos;
 
-import com.tany.jpos.interfaces.Packager;
+import com.tany.jpos.interfaces.MsgPackager;
 import com.tany.jpos.io.Resource;
+import com.tany.jpos.iso.ISOMsgPackager;
 
 public class PackagerFactory {
     private static PackagerFactory factory;
@@ -17,12 +18,12 @@ public class PackagerFactory {
         return  factory;
     }
 
-    public Packager buildPackager(){
-        return new ISOPackager();
+    public MsgPackager buildPackager(){
+        return new ISOMsgPackager();
     }
 
-    public Packager buildPackager(Resource resource){
-        return new ISOPackager();
+    public MsgPackager buildPackager(Resource resource){
+        return new ISOMsgPackager();
     }
 
 }

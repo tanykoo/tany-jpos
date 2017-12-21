@@ -1,10 +1,13 @@
 package com.tany.jpos.interfaces;
 
 
-import com.tany.jpos.ISOException;
-import com.tany.jpos.ISOField;
+import com.tany.jpos.JPOSException;
+import com.tany.jpos.NullPadder;
+import com.tany.jpos.iso.ISOField;
 
 public interface Padder {
-    ISOField pad(ISOField isoField)throws ISOException;
-    ISOField unPad(ISOField isoField)throws ISOException;
+    Padder NULL_PADDER = new NullPadder();
+
+    ISOField pad(ISOField isoField, int len)throws JPOSException;
+    ISOField unPad(ISOField isoField, int len)throws JPOSException;
 }

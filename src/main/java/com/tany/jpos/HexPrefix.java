@@ -1,6 +1,7 @@
 package com.tany.jpos;
 
 import com.tany.jpos.interfaces.Prefix;
+import com.tany.jpos.iso.ISORuntimeException;
 import com.tany.jpos.util.StringUtils;
 
 /**

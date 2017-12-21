@@ -1,9 +1,12 @@
 package com.tany.jpos;
 
 import com.tany.jpos.interfaces.Prefix;
+import com.tany.jpos.iso.ISORuntimeException;
 import com.tany.jpos.util.StringUtils;
 
 /**
+ * 前缀解析器
+ * 解析前缀用BCD表示的字段
  * @Author ThinkPad
  * @Since 1.0
  */

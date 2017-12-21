@@ -1,6 +1,7 @@
 package com.tany.jpos;
 
 import com.tany.jpos.interfaces.Padder;
+import com.tany.jpos.iso.ISOField;
 
 /**
  * @Author ThinkPad
@@ -8,12 +9,12 @@ import com.tany.jpos.interfaces.Padder;
  */
 public class NullPadder implements Padder {
     @Override
-    public ISOField pad(ISOField isoField) {
+    public ISOField pad(ISOField isoField, int len) {
         return isoField;
     }
 
     @Override
-    public ISOField unPad(ISOField isoField) {
+    public ISOField unPad(ISOField isoField, int len) {
         return isoField;
     }
 }
