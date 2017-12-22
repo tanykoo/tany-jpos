@@ -14,7 +14,7 @@ public class NullPrefix implements Prefix {
 
     @Override
     public byte[] pack(int length) {
-        return null;
+        return new byte[0];
     }
 
     @Override

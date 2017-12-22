@@ -8,4 +8,9 @@ public class IFB_BitMap extends BaseISOFieldPackager{
     public IFB_BitMap(){
         super(new ISOBBitMapPackager(),32);
     }
+
+    @Override
+    public void setMaxlen(int maxlen) {
+        super.setMaxlen(32);
+    }
 }

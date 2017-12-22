@@ -35,15 +35,26 @@ public abstract class ISOBitMapPackager extends ISOFieldContentPackager {
      * @return
      */
     private byte[] pack(ISOBitMap isoBitMap) {
+        boolean longbit = false;
         BitSet bitSet = isoBitMap.getValue();
         byte[] bitMap = new byte[bitSet.size() >> 3];
         for (int i = 1; i < bitSet.size(); i++) {
             if (bitSet.get(i)) {
-                bitMap[i >> 3] |= 0x01;
-                bitMap[i >> 3] = (byte) ((bitMap[i << 3] << (i % 8)) & 0xff);
+                bitMap[i >> 3] |= ((0x01 << (7 - i % 8)) & 0xff);
+                if(i >= 64 && !longbit) {
+                    longbit = true;
+                }
             }
         }
-        return toLocalByte(bitMap);
+        byte tmp [] ;
+        if(!longbit){
+            tmp = new byte[64 >> 3];
+        }else{
+            bitMap[0] |= 1000_0000;
+            tmp = new byte[128 >> 3];
+        }
+        System.arraycopy(bitMap, 0, tmp, 0, tmp.length);
+        return toLocalByte(tmp);
     }
 
     /**

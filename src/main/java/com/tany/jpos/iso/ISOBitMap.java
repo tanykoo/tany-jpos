@@ -25,6 +25,9 @@ public class ISOBitMap extends ISOField {
         type="bitmap";
     }
 
+    public ISOBitMap(){
+        value = new BitSet(128);
+    }
     @Override
     public BitSet getValue() {
         return (BitSet) value;

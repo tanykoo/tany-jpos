@@ -7,4 +7,9 @@ public class IFA_BitMap extends BaseISOFieldPackager{
     public IFA_BitMap() {
         super(new ISOABitMapPackager(),16);
     }
+
+    @Override
+    public void setMaxlen(int maxlen) {
+        super.setMaxlen(16);
+    }
 }
